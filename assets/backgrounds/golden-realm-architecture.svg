@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1100" role="img" aria-label="Layered champagne gold architectural arches and a sunlit gallery floor">
+  <defs>
+    <linearGradient id="atmosphere" x2="0" y2="1">
+      <stop stop-color="#fff1c9"/>
+      <stop offset=".38" stop-color="#f4d77d"/>
+      <stop offset=".73" stop-color="#d6a52e"/>
+      <stop offset="1" stop-color="#a96d25"/>
+    </linearGradient>
+    <radialGradient id="horizon" cx="50%" cy="68%" r="50%">
+      <stop stop-color="#fffdf0" stop-opacity=".96"/>
+      <stop offset=".18" stop-color="#fff1c9" stop-opacity=".86"/>
+      <stop offset=".48" stop-color="#f4d77d" stop-opacity=".34"/>
+      <stop offset="1" stop-color="#d6a52e" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="metal" x1="0" x2="1" y1="0" y2=".25">
+      <stop stop-color="#a96d25"/>
+      <stop offset=".12" stop-color="#f4d77d"/>
+      <stop offset=".22" stop-color="#d6a52e"/>
+      <stop offset=".31" stop-color="#fff1c9"/>
+      <stop offset=".43" stop-color="#c58a26"/>
+      <stop offset=".53" stop-color="#f8dfa0"/>
+      <stop offset=".67" stop-color="#a96d25"/>
+      <stop offset=".79" stop-color="#f4d77d"/>
+      <stop offset=".9" stop-color="#fff1c9"/>
+      <stop offset="1" stop-color="#a96d25"/>
+    </linearGradient>
+    <linearGradient id="archShade" x2="0" y2="1">
+      <stop stop-color="#fff7df" stop-opacity=".68"/>
+      <stop offset=".4" stop-color="#d6a52e" stop-opacity=".08"/>
+      <stop offset="1" stop-color="#482535" stop-opacity=".28"/>
+    </linearGradient>
+    <linearGradient id="glass" x1="0" x2="1">
+      <stop stop-color="#fffdf0" stop-opacity=".58"/>
+      <stop offset=".42" stop-color="#fff1c9" stop-opacity=".08"/>
+      <stop offset=".72" stop-color="#fffdf0" stop-opacity=".32"/>
+      <stop offset="1" stop-color="#a96d25" stop-opacity=".05"/>
+    </linearGradient>
+    <linearGradient id="floor" x2="0" y2="1">
+      <stop stop-color="#fff1c9"/>
+      <stop offset=".25" stop-color="#e7bd61"/>
+      <stop offset=".62" stop-color="#c28a30"/>
+      <stop offset="1" stop-color="#8b5723"/>
+    </linearGradient>
+    <linearGradient id="reflection" x1="0" x2="1">
+      <stop stop-color="#fff1c9" stop-opacity="0"/>
+      <stop offset=".5" stop-color="#fffdf0" stop-opacity=".68"/>
+      <stop offset="1" stop-color="#fff1c9" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Warm stone walls and the luminous opening beyond the arches. -->
+  <rect width="1600" height="1100" fill="url(#atmosphere)"/>
+  <rect width="1600" height="1100" fill="url(#horizon)"/>
+  <path d="M0 0h260v700H0zM1340 0h260v700h-260z" fill="#fff1c9" opacity=".24"/>
+  <path d="M75 0h34v1100H75zM1491 0h34v1100h-34z" fill="url(#glass)"/>
+  <path d="M268 0v710M1332 0v710" stroke="#fffdf0" stroke-opacity=".48" stroke-width="4"/>
+  <path d="M0 230h300M1300 230h300M0 470h170M1430 470h170" stroke="#a96d25" stroke-opacity=".23" stroke-width="3"/>
+
+  <!-- Broad sculptural arch, polished outer face, and inset champagne ribs. -->
+  <path d="M58 1100V650C58 275 370 45 800 45s742 230 742 605v450h-178V650c0-282-223-430-564-430S236 368 236 650v450z" fill="url(#metal)"/>
+  <path d="M58 1100V650C58 275 370 45 800 45s742 230 742 605v450h-178V650c0-282-223-430-564-430S236 368 236 650v450z" fill="url(#archShade)"/>
+  <path d="M83 1095V650C83 296 384 72 800 72s717 224 717 578v445" fill="none" stroke="#fff8df" stroke-opacity=".72" stroke-width="8"/>
+  <path d="M212 1100V650c0-303 239-457 588-457s588 154 588 457v450" fill="none" stroke="#8b5723" stroke-opacity=".48" stroke-width="12"/>
+
+  <!-- Inner illuminated portal gives the scene a second layer of depth. -->
+  <path d="M337 1100V706c0-236 175-371 463-371s463 135 463 371v394h-95V706c0-181-138-276-368-276s-368 95-368 276v394z" fill="url(#metal)" opacity=".82"/>
+  <path d="M374 1100V706c0-211 160-334 426-334s426 123 426 334v394" fill="none" stroke="#fffdf0" stroke-opacity=".74" stroke-width="7"/>
+  <path d="M466 1100V735c0-151 110-242 334-242s334 91 334 242v365" fill="none" stroke="#a96d25" stroke-opacity=".55" stroke-width="8"/>
+
+  <!-- Horizon and reflective stone floor with restrained architectural seams. -->
+  <path d="M0 736Q800 660 1600 736v364H0z" fill="url(#floor)"/>
+  <path d="M0 736Q800 660 1600 736" fill="none" stroke="#fffdf0" stroke-opacity=".76" stroke-width="9"/>
+  <path d="M800 706L80 1100M800 706L390 1100M800 706L620 1100M800 706L980 1100M800 706L1210 1100M800 706L1520 1100" stroke="#8b5723" stroke-opacity=".25" stroke-width="3"/>
+  <path d="M0 854Q800 804 1600 854M0 970Q800 946 1600 970" fill="none" stroke="#fff1c9" stroke-opacity=".33" stroke-width="5"/>
+  <path d="M620 750h360l185 350H435z" fill="url(#reflection)" opacity=".58"/>
+  <path d="M715 749h170l76 351H639z" fill="#fffdf0" opacity=".12"/>
+</svg>

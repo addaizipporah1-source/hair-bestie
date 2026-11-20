@@ -1,0 +1,185 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Prepare Your Photo | Hair Bestie</title>
+
+    <link rel="stylesheet" href="photo-upload.css">
+    <link rel="stylesheet" href="assets/css/atelier-backgrounds.css">
+</head>
+
+<body class="atelier-page atelier-upload">
+
+    <header>
+        <a href="index.html" class="logo">Hair Bestie ✨</a>
+        <a href="index.html" class="back-link">← Back home</a>
+    </header>
+
+    <main class="upload-page">
+
+        <div class="eyebrow">✧ YOUR BEAUTY, YOUR MAGIC ✧</div>
+
+        <h1>
+            Let's Get Your Photo<br>
+            <span>Ready for a New Look!</span>
+        </h1>
+
+        <p class="intro">
+            Your transformation starts with a photo.
+            Upload one or take a fresh selfie.
+        </p>
+
+        <section class="upload-card">
+
+            <div class="camera-icon">📸✨</div>
+
+            <h2>Choose Your Photo</h2>
+
+            <p class="instruction">
+                Use a clear picture where your face is visible.
+            </p>
+
+            <div class="camera-guidance">
+                <h3>Before you take your photo ✨</h3>
+                <p>Face the camera directly and keep your head upright.</p>
+                <p>Find a bright place where your face is clearly visible.</p>
+                <p>Position your head and shoulders within the camera frame.</p>
+            </div>
+
+            <div class="upload-actions">
+
+                <!-- Upload an existing photo -->
+                <input
+                    type="file"
+                    id="photoInput"
+                    accept="image/*"
+                >
+
+                <label for="photoInput" class="action-button">
+                    🖼️ Upload a Photo
+                </label>
+
+                <!-- Camera controls -->
+                <div class="camera-controls">
+
+                    <button
+                        type="button"
+                        id="startCamera"
+                        class="action-button secondary"
+                    >
+                        📷 Open Camera
+                    </button>
+
+                    <div id="cameraArea" hidden>
+
+                        <video
+                            id="cameraPreview"
+                            autoplay
+                            playsinline
+                        ></video>
+
+                        <button type="button" id="captureSelfie">
+                            Take My Selfie ✨
+                        </button>
+
+                        <button type="button" id="cancelCamera">
+                            Cancel
+                        </button>
+
+                    </div>
+
+                    <canvas id="cameraCanvas" hidden></canvas>
+
+                </div>
+
+            </div>
+
+            <!-- Photo feedback -->
+            <div id="photoMessage" role="status" aria-live="polite">
+                Your selected photo will appear here.
+            </div>
+
+            <!-- Automatic photo analysis -->
+            <div id="photoAnalysis" hidden aria-live="polite">
+
+                <h3>Photo quality check ✨</h3>
+
+                <ul id="analysisResults"></ul>
+
+            </div>
+
+            <!-- Photo preview -->
+            <img
+                id="photoPreview"
+                alt="Preview of your selected photo"
+            >
+
+            <!-- Photo confirmation -->
+            <div id="photoChecks" hidden>
+
+                <h3>Is your photo ready? 💛</h3>
+
+                <p class="check-intro">
+                    Check these guidelines before continuing:
+                </p>
+
+                <label class="check-item">
+                    <input type="checkbox" class="photoCheck">
+                    My face is clearly visible.
+                </label>
+
+                <label class="check-item">
+                    <input type="checkbox" class="photoCheck">
+                    I'm facing the camera with my head upright.
+                </label>
+
+                <label class="check-item">
+                    <input type="checkbox" class="photoCheck">
+                    My face is well lit and not covered.
+                </label>
+
+                <button type="button" id="retakePhoto" hidden>
+                    Retake Photo 📸
+                </button>
+
+                <button id="confirmPhoto" disabled>
+                    My Photo Is Ready 💛
+                </button>
+
+                <button id="continueToHair" hidden>
+                    Continue to Hairstyles ✨
+                </button>
+
+            </div>
+
+        </section>
+
+        <div class="photo-tips">
+
+            <h3>✨ A few tips for your best result</h3>
+
+            <ul>
+                <li>Face the camera directly.</li>
+                <li>Keep your head comfortably upright.</li>
+                <li>Choose a well-lit location.</li>
+                <li>Make sure your face is not hidden.</li>
+                <li>You can wear makeup or have natural skin.</li>
+                <li>A natural smile is absolutely fine!</li>
+            </ul>
+
+        </div>
+
+        <p class="privacy-note">
+            🔒 This demo previews your photo in your browser.
+            It does not send your photo to a server.
+        </p>
+
+    </main>
+
+    <script src="photo-upload.js"></script>
+
+</body>
+</html>

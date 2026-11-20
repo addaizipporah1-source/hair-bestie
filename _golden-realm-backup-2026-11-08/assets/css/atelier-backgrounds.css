@@ -1,0 +1,89 @@
+﻿/* Shared Golden Beauty Atelier background system.
+   Each page uses a locally stored, photographed salon interior. */
+.atelier-page {
+    min-height: 100vh;
+    background-color: #21151b;
+    background-image:
+        linear-gradient(180deg, var(--atelier-shade-top), var(--atelier-shade-bottom)),
+        radial-gradient(ellipse at 78% 14%, var(--atelier-light), transparent 45%),
+        var(--atelier-photo);
+    background-size: cover, 190% 180%, cover;
+    background-position: center, 0% 48%, center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.atelier-home {
+    --atelier-photo: url("../backgrounds/atelier-home.jpg");
+    --atelier-shade-top: rgba(28, 15, 19, .77);
+    --atelier-shade-bottom: rgba(28, 15, 19, .84);
+    --atelier-light: rgba(211, 159, 73, .30);
+}
+
+.atelier-upload {
+    --atelier-photo: url("../backgrounds/atelier-upload.jpg");
+    --atelier-shade-top: rgba(40, 28, 29, .66);
+    --atelier-shade-bottom: rgba(38, 26, 29, .75);
+    --atelier-light: rgba(238, 208, 151, .26);
+}
+
+.atelier-collection {
+    --atelier-photo: url("../backgrounds/atelier-collection.jpg");
+    --atelier-shade-top: rgba(27, 15, 22, .76);
+    --atelier-shade-bottom: rgba(25, 14, 20, .84);
+    --atelier-light: rgba(195, 132, 87, .22);
+}
+
+.atelier-preview {
+    --atelier-photo: url("../backgrounds/atelier-preview.jpg");
+    --atelier-shade-top: rgba(35, 19, 19, .72);
+    --atelier-shade-bottom: rgba(31, 18, 21, .82);
+    --atelier-light: rgba(226, 174, 105, .28);
+}
+
+/* The old homepage sparkle layer is replaced by natural studio light. */
+.atelier-home .sparkles {
+    display: none;
+}
+
+/* Keep foreground controls and content easy to distinguish from the photos. */
+.atelier-upload .upload-card,
+.atelier-upload .camera-guidance,
+.atelier-upload #photoChecks,
+.atelier-upload .photo-tips {
+    background-color: rgba(39, 27, 30, .88);
+    box-shadow: 0 16px 42px rgba(12, 7, 8, .30);
+}
+
+.atelier-collection .hair-card,
+.atelier-collection .selection-panel,
+.atelier-collection .user-photo-section,
+.atelier-preview .preview-card {
+    background-color: rgba(35, 23, 29, .91);
+    box-shadow: 0 16px 42px rgba(12, 7, 8, .28);
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+    .atelier-page {
+        animation: atelier-light-drift 34s ease-in-out infinite alternate;
+    }
+}
+
+@keyframes atelier-light-drift {
+    from { background-position: center, 0% 48%, center; }
+    to { background-position: center, 100% 52%, center; }
+}
+
+@media (max-width: 700px) {
+    .atelier-page {
+        background-attachment: scroll;
+        background-size: cover, 220% 170%, cover;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .atelier-page {
+        animation: none !important;
+    }
+}
+

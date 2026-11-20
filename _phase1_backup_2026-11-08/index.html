@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+content="width=device-width,
+initial-scale=1.0">
+    <title>Hairstyle studio</title>
+<\<head>
+<body>
+    <h1>Girl, let's Do Your Hair!!!</h1>
+    <p> Try something new before you hit the salon!</p>
+    <button>Let's try a new look</button>
+</body> 
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Hair Bestie ✨</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: Georgia, serif;
+            color: #FFF0C9;
+            background:
+                radial-gradient(ellipse at 15% 20%, #70405E 0%, transparent 40%),
+                radial-gradient(ellipse at 85% 75%, #50304F 0%, transparent 45%),
+                linear-gradient(135deg, #100B18, #25152E, #38203A);
+            overflow-x: hidden;
+        }
+
+        .sparkles {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            background-image:
+                radial-gradient(circle, #FFF0C9 1px, transparent 2px),
+                radial-gradient(circle, #D9AE55 1.5px, transparent 3px),
+                radial-gradient(circle, white 1px, transparent 2px);
+            background-size: 83px 97px, 137px 151px, 193px 173px;
+            background-position: 10px 20px, 60px 80px, 120px 30px;
+            opacity: 0.65;
+            animation: twinkle 4s ease-in-out infinite alternate;
+        }
+
+        header {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            padding: 22px 7%;
+            border-bottom: 1px solid #D9AE5530;
+        }
+
+        .logo {
+            color: #E8C575;
+            font-size: 21px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #FFF0C9;
+        }
+
+        .menu {
+            color: #E0D0E4;
+            font: 13px Arial, sans-serif;
+        }
+
+        .hero {
+            position: relative;
+            z-index: 1;
+            min-height: 75vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 65px 22px;
+        }
+
+        .content {
+            max-width: 720px;
+        }
+
+        .eyebrow {
+            color: #E8C575;
+            font: 11px Arial, sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            margin-bottom: 25px;
+        }
+
+        h1 {
+            font-size: clamp(43px, 9vw, 78px);
+            line-height: 1.08;
+            font-weight: normal;
+            margin: 0 0 24px;
+            text-shadow: 0 0 28px #D9AE5540;
+        }
+
+        h1 span {
+            display: inline-block;
+            font-style: italic;
+            background: linear-gradient(
+                100deg,
+                #B98530,
+                #FFF0C9,
+                #D9AE55,
+                #FFF0C9
+            );
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .description {
+            max-width: 470px;
+            margin: 0 auto 32px;
+            color: #E0D0E4;
+            font: 15px/1.9 Arial, sans-serif;
+        }
+
+        .actions {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 14px;
+        }
+
+        button {
+            padding: 16px 27px;
+            border-radius: 40px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: transform 0.25s, box-shadow 0.25s;
+        }
+
+        .primary {
+            border: 1px solid #FFF0C9;
+            color: #25152E;
+            background: linear-gradient(
+                110deg, #B98530, #FFF0C9, #D9AE55
+            );
+            box-shadow: 0 0 28px #D9AE5540;
+        }
+
+        .secondary {
+            color: #FFF0C9;
+            background: #FFFFFF08;
+            border: 1px solid #D9AE5580;
+        }
+
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 32px #D9AE5570;
+        }
+
+        .promise {
+            margin-top: 30px;
+            color: #BCA7C3;
+            font: 10px Arial, sans-serif;
+            letter-spacing: 2px;
+        }
+
+        .features {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            max-width: 950px;
+            margin: 0 auto;
+            padding: 0 22px 55px;
+        }
+
+        .feature {
+            padding: 24px 16px;
+            text-align: center;
+            border: 1px solid #D9AE5530;
+            border-radius: 18px;
+            background: linear-gradient(
+                145deg, #FFFFFF0B, #70405E20
+            );
+            backdrop-filter: blur(8px);
+        }
+
+        .feature .symbol {
+            font-size: 28px;
+            margin-bottom: 12px;
+        }
+
+        .feature h2 {
+            color: #E8C575;
+            font-size: 17px;
+            font-weight: normal;
+            margin: 0 0 10px;
+        }
+
+        .feature p {
+            color: #D5C5D9;
+            font: 12px/1.7 Arial, sans-serif;
+            margin: 0;
+        }
+
+        footer {
+            position: relative;
+            z-index: 1;
+            padding: 22px;
+            text-align: center;
+            color: #BCA7C3;
+            font: 11px Arial, sans-serif;
+            border-top: 1px solid #D9AE5525;
+        }
+
+        @keyframes twinkle {
+            from { opacity: 0.25; }
+            to { opacity: 0.8; }
+        }
+
+        @media (max-width: 600px) {
+            header {
+                padding: 18px 5%;
+            }
+
+            .logo {
+                font-size: 17px;
+            }
+
+            .menu {
+                font-size: 11px;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+                max-width: 420px;
+            }
+
+            .hero {
+                min-height: auto;
+                padding: 80px 20px;
+            }
+
+            .eyebrow {
+                letter-spacing: 2px;
+                font-size: 10px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .sparkles {
+                animation: none;
+            }
+
+            button {
+                transition: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="sparkles"></div>
+
+    <header>
+        <div class="logo">Hair <span>Bestie</span> ✨</div>
+        <div class="menu">YOUR HAIR. YOUR MAGIC.</div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="content">
+
+                <div class="eyebrow">
+                    ✧ A little pixie dust, a lot of beauty ✧
+                </div>
+
+                <h1>
+                    Girl, Let's Do<br>
+                    <span>Your Hair!</span> 💛
+                </h1>
+
+                <p class="description">
+                    Braids, wigs, curls or locs —
+                    let's discover the look that makes
+                    you feel absolutely magical.
+                </p>
+
+                <div class="actions">
+                    <button class="primary" onclick="startStyling()">
+                        Let's Find Your Magic ✨
+                    </button>
+
+                    <button class="secondary" onclick="showStyles()">
+                        Explore Hairstyles
+                    </button>
+                </div>
+
+                <div class="promise">
+                    YOUR BEAUTY. YOUR IDENTITY. YOUR NEXT LOOK.
+                </div>
+
+            </div>
+        </section>
+
+        <section class="features" id="features">
+
+            <article class="feature">
+                <div class="symbol">📸</div>
+                <h2>Your Photo</h2>
+                <p>Start with your own photo and keep your real face.</p>
+            </article>
+
+            <article class="feature">
+                <div class="symbol">✨</div>
+                <h2>Your New Look</h2>
+                <p>Discover hairstyles, colours, lengths and textures.</p>
+            </article>
+
+            <article class="feature">
+                <div class="symbol">💛</div>
+                <h2>Your Hair Journey</h2>
+                <p>Save your favourite looks and share your style.</p>
+            </article>
+
+        </section>
+    </main>
+
+    <footer>
+        Made for every shade, every texture and every beautiful you. 💛
+    </footer>
+
+    <script>
+       function startStyling() {
+    window.location.href = "photo-upload.html";
+} 
+
+        function showStyles() {
+            document.getElementById("features").scrollIntoView({
+                behavior: "smooth"
+            });
+        }
+    </script>
+
+</body>
+</html>
+
+
+
+
+      
+

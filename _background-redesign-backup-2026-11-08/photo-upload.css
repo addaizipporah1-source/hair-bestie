@@ -1,0 +1,515 @@
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: Georgia, serif;
+    color: #FFF0C9;
+    background:
+        radial-gradient(ellipse at 15% 20%, #70405E 0%, transparent 40%),
+        radial-gradient(ellipse at 85% 75%, #50304F 0%, transparent 45%),
+        linear-gradient(135deg, #100B18, #25152E, #38203A);
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 22px 7%;
+    border-bottom: 1px solid #D9AE5530;
+}
+
+.logo {
+    color: #E8C575;
+    font-size: 21px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.back-link {
+    color: #FFF0C9;
+    font: 13px Arial, sans-serif;
+    text-decoration: none;
+}
+
+.upload-page {
+    max-width: 720px;
+    margin: auto;
+    padding: 55px 22px;
+    text-align: center;
+}
+
+.eyebrow {
+    color: #E8C575;
+    font: 11px Arial, sans-serif;
+    letter-spacing: 4px;
+    margin-bottom: 22px;
+}
+
+h1 {
+    font-size: clamp(34px, 7vw, 55px);
+    font-weight: normal;
+    line-height: 1.2;
+    margin-bottom: 18px;
+}
+
+h1 span {
+    color: #E8C575;
+    font-style: italic;
+}
+
+.intro {
+    color: #E0D0E4;
+    font: 14px/1.8 Arial, sans-serif;
+    margin-bottom: 35px;
+}
+
+.upload-card {
+    padding: 32px 22px;
+    border: 1px solid #D9AE5580;
+    border-radius: 22px;
+    background: linear-gradient(145deg, #70405E40, #FFFFFF08);
+    box-shadow: 0 0 35px #D9AE5515;
+}
+
+.camera-icon {
+    font-size: 42px;
+}
+
+.upload-card h2 {
+    color: #E8C575;
+    font-size: 24px;
+    font-weight: normal;
+}
+
+.instruction {
+    color: #D5C5D9;
+    font: 13px Arial, sans-serif;
+}
+
+.upload-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 25px;
+}
+
+#photoInput,
+#cameraInput {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    overflow: hidden;
+}
+
+.action-button {
+    display: inline-block;
+    padding: 14px 20px;
+    border-radius: 30px;
+    background: linear-gradient(110deg, #B98530, #FFF0C9, #D9AE55);
+    color: #25152E;
+    font: bold 13px Arial, sans-serif;
+    cursor: pointer;
+}
+
+.action-button.secondary {
+    color: #FFF0C9;
+    background: #70405E;
+    border: 1px solid #D9AE55;
+}
+
+.action-button:focus-visible {
+    outline: 2px solid #FFF0C9;
+    outline-offset: 4px;
+}
+
+#photoMessage {
+    color: #E8C575;
+    font: 13px/1.6 Arial, sans-serif;
+    margin-top: 22px;
+}
+
+#photoPreview {
+    display: none;
+    width: 100%;
+    max-width: 320px;
+    max-height: 420px;
+    object-fit: contain;
+    margin: 22px auto;
+    border-radius: 16px;
+    border: 1px solid #D9AE5580;
+}
+
+#photoChecks {
+    margin-top: 25px;
+    padding: 20px;
+    border-radius: 16px;
+    border: 1px solid #D9AE5550;
+    background: #25152E90;
+    text-align: left;
+}
+
+#photoChecks[hidden] {
+    display: none;
+}
+
+#photoChecks h3 {
+    color: #E8C575;
+    font-weight: normal;
+}
+
+.check-intro {
+    color: #D5C5D9;
+    font: 13px Arial, sans-serif;
+}
+
+.check-item {
+    display: flex;
+    gap: 10px;
+    margin: 16px 0;
+    color: #FFF0C9;
+    font: 13px/1.6 Arial, sans-serif;
+}
+
+.check-item input {
+    flex-shrink: 0;
+    accent-color: #D9AE55;
+}
+
+#confirmPhoto {
+    width: 100%;
+    margin-top: 15px;
+    padding: 15px;
+    border: 0;
+    border-radius: 30px;
+    background: linear-gradient(110deg, #B98530, #FFF0C9, #D9AE55);
+    color: #25152E;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#confirmPhoto:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+.photo-tips {
+    margin-top: 30px;
+    padding: 20px;
+    text-align: left;
+    border-left: 2px solid #D9AE55;
+    background: #FFFFFF08;
+}
+
+.photo-tips h3 {
+    color: #E8C575;
+    font-weight: normal;
+}
+
+.photo-tips li {
+    color: #D5C5D9;
+    font: 13px/2 Arial, sans-serif;
+}
+
+.privacy-note {
+    color: #BCA7C3;
+    font: 11px/1.7 Arial, sans-serif;
+    margin-top: 25px;
+}
+
+@media (max-width: 500px) {
+    header {
+        padding: 18px 5%;
+    }
+
+    .logo {
+        font-size: 17px;
+    }
+
+    .upload-actions {
+        flex-direction: column;
+    }
+
+    .action-button {
+        text-align: center;
+    }
+}
+#continueToHair {
+    width: 100%;
+    margin-top: 12px;
+    padding: 15px;
+    border: 1px solid #D9AE55;
+    border-radius: 30px;
+    background: #70405E;
+    color: #FFF0C9;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#continueToHair:hover {
+    background: #8A5273;
+}
+
+#continueToHair[hidden] {
+    display: none;
+}
+button#continueToHair {
+    display: block;
+    width: 100%;
+    margin-top: 12px;
+    padding: 15px;
+    border: 1px solid #D9AE55;
+    border-radius: 30px;
+    background: #70405E;
+    color: #FFF0C9;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+button#continueToHair:hover {
+    background: #8A5273;
+}
+.photo-guidelines {
+    width: 90%;
+    max-width: 650px;
+    margin: 25px auto;
+    padding: 22px;
+    background: rgba(112, 64, 94, 0.22);
+    border: 1px solid rgba(217, 174, 85, 0.55);
+    border-radius: 18px;
+}
+
+.photo-guidelines h2 {
+    color: #FFF0C9;
+    text-align: center;
+    margin-bottom: 12px;
+}
+
+.photo-guidelines > p {
+    color: #FFF0C9;
+    text-align: center;
+    line-height: 1.6;
+}
+
+.guideline-list {
+    display: grid;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.guideline {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.guideline span {
+    font-size: 23px;
+}
+
+.guideline p {
+    color: #FFF0C9;
+    line-height: 1.5;
+    margin: 0;
+}
+.camera-controls {
+    width: 100%;
+    margin-top: 15px;
+}
+
+.camera-controls button {
+    padding: 13px 20px;
+    border: 1px solid #D9AE55;
+    border-radius: 25px;
+    background: #70405E;
+    color: #FFF0C9;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#cameraArea {
+    margin-top: 18px;
+    text-align: center;
+}
+
+#cameraPreview {
+    display: block;
+    width: 100%;
+    max-width: 420px;
+    margin: 0 auto 15px;
+    border-radius: 18px;
+    background: #000;
+}
+
+#cameraArea button {
+    margin: 5px;
+}
+
+#cameraArea[hidden] {
+    display: none;
+}
+/* LIVE CAMERA BUTTON STYLING */
+
+.camera-controls {
+    width: 100%;
+    margin: 20px auto;
+    text-align: center;
+}
+
+#startCamera {
+    display: inline-block;
+    padding: 14px 28px;
+    background: linear-gradient(135deg, #D9AE55, #FFF0C9);
+    color: #25152E;
+    border: none;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(217, 174, 85, 0.25);
+}
+
+#startCamera:hover {
+    transform: scale(1.04);
+    box-shadow: 0 6px 20px rgba(217, 174, 85, 0.4);
+}
+
+#cameraArea {
+    margin: 20px auto;
+    text-align: center;
+}
+
+#cameraPreview {
+    display: block;
+    width: 100%;
+    max-width: 420px;
+    margin: 0 auto 15px;
+    border-radius: 18px;
+    background: #000;
+}
+
+#cameraArea button {
+    padding: 12px 20px;
+    margin: 6px;
+    border-radius: 25px;
+    border: 1px solid #D9AE55;
+    background: #70405E;
+    color: #FFF0C9;
+    cursor: pointer;
+}
+
+#cameraArea[hidden] {
+    display: none;
+}
+/* CAMERA GUIDANCE */
+
+.camera-guidance {
+    margin: 20px auto;
+    padding: 18px;
+    max-width: 500px;
+    background: rgba(217, 174, 85, 0.10);
+    border: 1px solid rgba(217, 174, 85, 0.5);
+    border-radius: 16px;
+    color: #FFF0C9;
+    text-align: left;
+}
+
+.camera-guidance h3 {
+    color: #D9AE55;
+    margin-bottom: 12px;
+}
+
+.camera-guidance p {
+    margin: 8px 0;
+    line-height: 1.5;
+}
+
+/* CAMERA BUTTON */
+
+.camera-controls {
+    width: 100%;
+    margin: 20px auto;
+    text-align: center;
+}
+
+#startCamera {
+    display: inline-block;
+    padding: 14px 28px;
+    background: linear-gradient(135deg, #D9AE55, #FFF0C9);
+    color: #25152E;
+    border: none;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#cameraPreview {
+    display: block;
+    width: 100%;
+    max-width: 420px;
+    margin: 15px auto;
+    border-radius: 18px;
+    background: #000;
+}
+
+#cameraArea button,
+#retakePhoto {
+    padding: 12px 22px;
+    margin: 6px;
+    border: 1px solid #D9AE55;
+    border-radius: 25px;
+    background: #70405E;
+    color: #FFF0C9;
+    cursor: pointer;
+}
+
+#cameraArea[hidden],
+#photoAnalysis[hidden],
+#retakePhoto[hidden] {
+    display: none;
+}
+
+/* AUTOMATIC PHOTO RESULTS */
+
+#photoAnalysis {
+    margin: 20px auto;
+    padding: 18px;
+    max-width: 500px;
+    border: 1px solid rgba(217, 174, 85, 0.5);
+    border-radius: 16px;
+    background: rgba(37, 21, 46, 0.7);
+    color: #FFF0C9;
+    text-align: left;
+}
+
+#photoAnalysis h3 {
+    color: #D9AE55;
+}
+
+#analysisResults {
+    padding-left: 20px;
+    line-height: 1.8;
+}
+
+.analysis-pass {
+    color: #a8e6b0;
+}
+
+.analysis-fail {
+    color: #ffaaaa;
+}
+
+#startCamera:hover,
+#cameraArea button:hover,
+#retakePhoto:hover {
+    transform: translateY(-2px);
+    transition: 0.2s ease;
+}

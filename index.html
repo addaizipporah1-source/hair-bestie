@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Hair Bestie ✨</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: Georgia, serif;
+            color: #FFF0C9;
+            background:
+                radial-gradient(ellipse at 15% 20%, #70405E 0%, transparent 40%),
+                radial-gradient(ellipse at 85% 75%, #50304F 0%, transparent 45%),
+                linear-gradient(135deg, #100B18, #25152E, #38203A);
+            overflow-x: hidden;
+        }
+
+        .sparkles {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            background-image:
+                radial-gradient(circle, #FFF0C9 1px, transparent 2px),
+                radial-gradient(circle, #D9AE55 1.5px, transparent 3px),
+                radial-gradient(circle, white 1px, transparent 2px);
+            background-size: 83px 97px, 137px 151px, 193px 173px;
+            background-position: 10px 20px, 60px 80px, 120px 30px;
+            opacity: 0.65;
+            animation: twinkle 4s ease-in-out infinite alternate;
+        }
+
+        header {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            padding: 22px 7%;
+            border-bottom: 1px solid #D9AE5530;
+        }
+
+        .logo {
+            color: #E8C575;
+            font-size: 21px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #FFF0C9;
+        }
+
+        .menu {
+            color: #E0D0E4;
+            font: 13px Arial, sans-serif;
+        }
+
+        .hero {
+            position: relative;
+            z-index: 1;
+            min-height: 75vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 65px 22px;
+        }
+
+        .content {
+            max-width: 720px;
+        }
+
+        .eyebrow {
+            color: #E8C575;
+            font: 11px Arial, sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            margin-bottom: 25px;
+        }
+
+        h1 {
+            font-size: clamp(43px, 9vw, 78px);
+            line-height: 1.08;
+            font-weight: normal;
+            margin: 0 0 24px;
+            text-shadow: 0 0 28px #D9AE5540;
+        }
+
+        h1 span {
+            display: inline-block;
+            font-style: italic;
+            background: linear-gradient(
+                100deg,
+                #B98530,
+                #FFF0C9,
+                #D9AE55,
+                #FFF0C9
+            );
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .description {
+            max-width: 470px;
+            margin: 0 auto 32px;
+            color: #E0D0E4;
+            font: 15px/1.9 Arial, sans-serif;
+        }
+
+        .actions {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 14px;
+        }
+
+        button {
+            padding: 16px 27px;
+            border-radius: 40px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: transform 0.25s, box-shadow 0.25s;
+        }
+
+        .primary {
+            border: 1px solid #FFF0C9;
+            color: #25152E;
+            background: linear-gradient(
+                110deg, #B98530, #FFF0C9, #D9AE55
+            );
+            box-shadow: 0 0 28px #D9AE5540;
+        }
+
+        .secondary {
+            color: #FFF0C9;
+            background: #FFFFFF08;
+            border: 1px solid #D9AE5580;
+        }
+
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 32px #D9AE5570;
+        }
+
+        .promise {
+            margin-top: 30px;
+            color: #BCA7C3;
+            font: 10px Arial, sans-serif;
+            letter-spacing: 2px;
+        }
+
+        .features {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 24px 24px 76px;
+        }
+
+        .features-heading {
+            grid-column: 1 / -1;
+            max-width: 640px;
+            margin: 0 auto 8px;
+            text-align: center;
+        }
+
+        .features-heading .eyebrow {
+            margin-bottom: 14px;
+        }
+
+        .features-heading h2 {
+            margin: 0 0 12px;
+            color: #FFF0C9;
+            font-size: clamp(28px, 4vw, 38px);
+            font-weight: normal;
+        }
+
+        .features-heading p {
+            margin: 0;
+            color: #D5C5D9;
+            font: 14px/1.8 Arial, sans-serif;
+        }
+
+        .feature {
+            min-width: 0;
+            overflow: hidden;
+            border: 1px solid #D9AE5550;
+            border-radius: 22px;
+            background: linear-gradient(145deg, #2B1B31, #1A1021);
+            backdrop-filter: blur(8px);
+            box-shadow: 0 16px 38px #08050D45;
+        }
+
+        .feature-image {
+            position: relative;
+            height: 275px;
+            overflow: hidden;
+            background: #39233D;
+        }
+
+        .feature-image img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 35%;
+            transition: transform 0.55s ease;
+        }
+
+        .feature-label {
+            position: absolute;
+            z-index: 1;
+            top: 16px;
+            left: 16px;
+            padding: 8px 11px;
+            border: 1px solid #FFF0C980;
+            border-radius: 30px;
+            color: #FFF0C9;
+            background: #1B1020B8;
+            font: 10px Arial, sans-serif;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .feature-copy {
+            padding: 22px 22px 24px;
+        }
+
+        .feature .symbol {
+            margin-bottom: 8px;
+            color: #D9AE55;
+            font: 11px Arial, sans-serif;
+            letter-spacing: 2px;
+        }
+
+        .feature h2 {
+            color: #E8C575;
+            font-size: 21px;
+            font-weight: normal;
+            margin: 0 0 9px;
+        }
+
+        .feature p {
+            color: #D5C5D9;
+            font: 13px/1.75 Arial, sans-serif;
+            margin: 0;
+        }
+
+        footer {
+            position: relative;
+            z-index: 1;
+            padding: 22px;
+            text-align: center;
+            color: #BCA7C3;
+            font: 11px Arial, sans-serif;
+            border-top: 1px solid #D9AE5525;
+        }
+
+        @keyframes twinkle {
+            from { opacity: 0.25; }
+            to { opacity: 0.8; }
+        }
+
+        @media (hover: hover) and (prefers-reduced-motion: no-preference) {
+            .feature:hover .feature-image img {
+                transform: scale(1.035);
+            }
+        }
+
+        @media (max-width: 850px) {
+            .features {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 600px) {
+            header {
+                padding: 18px 5%;
+            }
+
+            .logo {
+                font-size: 17px;
+            }
+
+            .menu {
+                font-size: 11px;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+                max-width: 500px;
+                padding: 20px 20px 55px;
+            }
+
+            .feature-image {
+                height: 290px;
+            }
+
+            .features-heading {
+                margin-bottom: 4px;
+            }
+
+            .hero {
+                min-height: auto;
+                padding: 80px 20px;
+            }
+
+            .eyebrow {
+                letter-spacing: 2px;
+                font-size: 10px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .sparkles {
+                animation: none;
+            }
+
+            button {
+                transition: none;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="assets/css/atelier-backgrounds.css">
+</head>
+
+<body class="atelier-page atelier-home">
+
+    <div class="sparkles"></div>
+
+    <header>
+        <div class="logo">Hair <span>Bestie</span> ✨</div>
+        <div class="menu">YOUR HAIR. YOUR MAGIC.</div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="content">
+
+                <div class="eyebrow">
+                    ✧ A little pixie dust, a lot of beauty ✧
+                </div>
+
+                <h1>
+                    Girl, Let's Do<br>
+                    <span>Your Hair!</span> 💛
+                </h1>
+
+                <p class="description">
+                    Braids, wigs, curls or locs —
+                    let's discover the look that makes
+                    you feel absolutely magical.
+                </p>
+
+                <div class="actions">
+                    <button class="primary" onclick="startStyling()">
+                        Let's Find Your Magic ✨
+                    </button>
+
+                    <button class="secondary" onclick="exploreHairstyles()">
+                        Explore Hairstyles
+                    </button>
+                </div>
+
+                <div class="promise">
+                    YOUR BEAUTY. YOUR IDENTITY. YOUR NEXT LOOK.
+                </div>
+
+            </div>
+        </section>
+
+        <section class="features" id="features">
+
+    <div class="features-heading">
+        <div class="eyebrow">YOUR BEAUTY, YOUR WAY</div>
+        <h2>A little magic, made personal</h2>
+        <p>From your own photo to the styles you love, Hair Bestie is here for every part of your hair journey.</p>
+    </div>
+
+    <article class="feature">
+        <div class="feature-image">
+        <img src="assets/homepage/your-photo-natural-hair.jpg" alt="Close-up portrait of a Black woman with natural afro hair" loading="lazy">
+            <span class="feature-label">Your starting point</span>
+        </div>
+        <div class="feature-copy">
+            <div class="symbol">01 · YOUR PHOTO</div>
+            <h2>Your Photo</h2>
+            <p>Start with your own photo and explore looks while keeping your real face at the heart of the experience.</p>
+        </div>
+    </article>
+
+    <article class="feature">
+        <div class="feature-image">
+        <img src="assets/homepage/your-new-look-braids.jpg" alt="Editorial portrait of a Black woman with blonde braids" loading="lazy">
+            <span class="feature-label">Find your next look</span>
+        </div>
+        <div class="feature-copy">
+            <div class="symbol">02 · YOUR NEW LOOK</div>
+            <h2>Your New Look</h2>
+            <p>Explore braids, curls, wigs and locs with styles that help you imagine what feels like you.</p>
+        </div>
+    </article>
+
+    <article class="feature">
+        <div class="feature-image">
+        <img src="assets/homepage/your-new-journey-lifestyle.jpg" alt="Confident Black woman with natural curls outdoors" loading="lazy">
+            <span class="feature-label">Keep the moments</span>
+        </div>
+        <div class="feature-copy">
+            <div class="symbol">03 · YOUR NEW JOURNEY</div>
+            <h2>Your New Journey</h2>
+            <p>Save the looks you love, share your transformations and enjoy every new expression of your beauty.</p>
+        </div>
+    </article>
+
+</section>
+    </main>
+
+    <footer>
+        Made for every shade, every texture and every beautiful you. 💛
+    </footer>
+
+    <script>
+       function startStyling() {
+    window.location.href = "photo-upload.html";
+} 
+
+        function exploreHairstyles() {
+            let preparedPhoto = null;
+
+            try {
+                preparedPhoto = sessionStorage.getItem("hairstyleUserPhoto");
+            } catch (error) {
+                console.warn("Could not check for a prepared photo:", error);
+            }
+
+            if (preparedPhoto) {
+                window.location.href = "hairstyles.html";
+                return;
+            }
+
+            alert("A prepared photo is needed before you can explore hairstyles. Let's get your photo ready first.");
+            window.location.href = "photo-upload.html";
+        }
+    </script>
+
+</body>
+</html>
+
+
+
+
+      
+

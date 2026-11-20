@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Choose Your Hairstyle | Hair Bestie</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Georgia, serif;
+    color: #FFF0C9;
+    background:
+        radial-gradient(ellipse at 15% 15%, #70405E 0%, transparent 40%),
+        linear-gradient(135deg, #100B18, #25152E, #38203A);
+    min-height: 100vh;
+}
+
+header {
+    padding: 22px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #D9AE5550;
+}
+
+.logo {
+    color: #E8C575;
+    font-weight: bold;
+    font-size: 21px;
+    text-decoration: none;
+}
+
+.back {
+    color: #FFF0C9;
+    text-decoration: none;
+    font: 13px Arial, sans-serif;
+}
+
+main {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 30px 40px;
+}
+
+.intro {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.eyebrow {
+    color: #E8C575;
+    font: 11px Arial, sans-serif;
+    letter-spacing: 4px;
+}
+
+h1 {
+    font-size: clamp(32px, 6vw, 48px);
+    font-weight: normal;
+}
+
+h1 span {
+    color: #E8C575;
+    font-style: italic;
+}
+
+.intro p {
+    color: #D5C5D9;
+    font: 14px/1.8 Arial, sans-serif;
+}
+
+.filters {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 35px;
+}
+
+.filter {
+    padding: 11px 19px;
+    border-radius: 30px;
+    border: 1px solid #D9AE5580;
+    background: transparent;
+    color: #FFF0C9;
+    cursor: pointer;
+}
+
+.filter.active,
+.filter:hover {
+    background: linear-gradient(110deg, #B98530, #FFF0C9);
+    color: #25152E;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 25px;
+    width: 100%;
+    margin: 30px auto;
+    align-items: stretch;
+}
+
+.hair-card {
+    background: #FFFFFF0A;
+    border: 1px solid #D9AE5540;
+    border-radius: 18px;
+    overflow: hidden;
+    transition: 0.25s;
+}
+
+.hair-card:hover {
+    transform: translateY(-5px);
+    border-color: #E8C575;
+}
+
+.hair-art {
+    width: 100%;
+    height: 350px;
+    overflow: hidden;
+    background: #25152E;
+    border-radius: 16px 16px 0 0;
+}
+
+.hair-art img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: center;
+}
+
+.hair-card:hover .hair-art img {
+    transform: scale(1.05);
+}
+
+.hair-info {
+    padding: 18px;
+}
+
+.hair-info h3 {
+    color: #E8C575;
+    font-weight: normal;
+    margin: 0 0 8px;
+}
+
+.hair-info p {
+    color: #D5C5D9;
+    font: 12px/1.6 Arial, sans-serif;
+    min-height: 38px;
+}
+
+.select-style {
+    width: 100%;
+    padding: 12px;
+    border: 0;
+    border-radius: 25px;
+    background: linear-gradient(110deg, #B98530, #FFF0C9, #D9AE55);
+    color: #25152E;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.select-style.selected {
+    background: #70405E;
+    color: #FFF0C9;
+    border: 1px solid #D9AE55;
+}
+
+.selection-panel {
+    max-width: 500px;
+    margin: 35px auto;
+    padding: 25px;
+    text-align: center;
+    border: 1px solid #D9AE5580;
+    border-radius: 20px;
+    background: rgba(217, 174, 85, 0.12);
+}
+
+#selectedName {
+    color: #FFF0C9;
+    font: 14px Arial, sans-serif;
+}
+
+#continueButton {
+    padding: 14px 28px;
+    border: 0;
+    border-radius: 30px;
+    background: #D9AE55;
+    color: #25152E;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#continueButton:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+@media (max-width: 800px) {
+    .gallery {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 520px) {
+    main {
+        padding: 20px 15px;
+    }
+
+    .gallery {
+        grid-template-columns: 1fr;
+    }
+
+    header {
+        padding: 18px 5%;
+    }
+
+    .hair-art {
+        height: 300px;
+    }
+}
+.user-photo-section {
+    width: 100%;
+    max-width: 450px;
+    margin: 30px auto;
+    padding: 22px;
+    text-align: center;
+    background: rgba(112, 64, 94, 0.25);
+    border: 1px solid #D9AE55;
+    border-radius: 20px;
+}
+
+.user-photo-section h2 {
+    color: #FFF0C9;
+    font-size: 21px;
+}
+
+.user-photo-section img {
+    display: block;
+    width: 100%;
+    max-width: 320px;
+    height: auto;
+    object-fit: contain;
+    margin: 20px auto;
+    border-radius: 18px;
+}
+
+.user-photo-section p {
+    color: #FFF0C9;
+}
+</style>
+<link rel="stylesheet" href="assets/css/atelier-backgrounds.css">
+</head>
+
+<body class="atelier-page atelier-collection">
+
+<header>
+    <a href="index.html" class="logo">Hair Bestie ✨</a>
+    <a href="photo-upload.html" class="back">← Back to photo</a>
+</header>
+
+<main>
+<section class="user-photo-section" id="userPhotoSection">
+    <h2>Your Photo for the Transformation ✨</h2>
+
+    <img
+        id="userPhotoPreview"
+        src=""
+        alt="Your uploaded photo"
+    >
+
+    <p>Now let's find a hairstyle you love!</p>
+</section>
+    <section class="intro">
+        <div class="eyebrow">✧ YOUR NEXT HAIR ERA ✧</div>
+
+        <h1>Find Your <span>Perfect Look</span></h1>
+
+        <p>
+            Explore beautiful hairstyles and choose the one
+            you would love to try.
+        </p>
+    </section>
+
+    <section class="filters">
+        <button class="filter active" data-filter="all">All Styles</button>
+        <button class="filter" data-filter="braids">Braids</button>
+        <button class="filter" data-filter="wigs">Wigs</button>
+        <button class="filter" data-filter="locs">Locs</button>
+        <button class="filter" data-filter="natural">Natural Hair</button>
+    </section>
+
+
+<section class="gallery">
+
+    <!-- 1. Knotless Braids -->
+    <article class="hair-card" data-category="braids">
+        <div class="hair-art">
+            <img src="hairstyle images/knotless braids.jpg"
+                 alt="Knotless Braids">
+        </div>
+        <div class="hair-info">
+            <h3>Knotless Braids</h3>
+            <p>Elegant, lightweight and versatile braids.</p>
+            <button class="select-style">Choose This Style</button>
+        </div>
+    </article>
+
+    <!-- 2. Boho Braids -->
+    <article class="hair-card" data-category="braids">
+        <div class="hair-art">
+            <img src="hairstyle images/boho braids.jfif"
+                 alt="Boho Braids">
+        </div>
+        <div class="hair-info">
+            <h3>Boho Braids</h3>
+            <p>Soft, flowing braids with curly details.</p>
+            <button class="select-style">Choose This Style</button>
+        </div>
+    </article>
+
+    <!-- 3. Box Braids -->
+    <article class="hair-card" data-category="braids">
+        <div class="hair-art">
+            <img src="hairstyle images/box braids.jpg"
+                 alt="Box Braids">
+        </div>
+        <div class="hair-info">
+            <h3>Box Braids</h3>
+            <p>A timeless protective hairstyle.</p>
+            <button class="select-style">Choose This Style</button>
+        </div>
+    </article>
+
+    <!-- 4. Sleek Bob Wig -->
+    <article class="hair-card" data-category="wigs">
+        <div class="hair-art">
+            <img src="hairstyle images/sleek bob wig.jpg"
+                 alt="Sleek Bob Wig">
+        </div>
+        <div class="hair-info">
+            <h3>Sleek Bob Wig</h3>
+            <p>A polished and sophisticated short look.</p>
+            <button class="select-style">Choose This Style</button>
+        </div>
+    </article>
+
+    <!-- 5. Body Wave Wig -->
+    <article class="hair-card" data-category="wigs">
+        <div class="hair-art">
+            <img src="hairstyle images/body wave wig.jpg"
+                 alt="Body Wave Wig">
+        </div>
+        <div class="hair-info">
+            <h3>Body Wave Wig</h3>
+            <p>Long, flowing waves with natural movement.</p>
+            <button class="select-style">Choose This Style</button>
+        </div>
+    </article>
+
+    <!-- 6. Faux Locs -->
+    <article class="hair-card" data-category="locs">
+        <div class="hair-art">
+            <img src="hairstyle images/faux locs.jpg"
+                 alt="Faux Locs">
+        </div>
+        <div class="hair-info">
+            <h3>Faux Locs</h3>
+            <p>A beautiful textured protective style.</p>
+            <button class="select-style">Choose This Style</button>
+        </div>
+    </article>
+
+    <!-- 7. Butterfly Locs -->
+    <article class="hair-card" data-category="locs">
+        <div class="hair-art">
+            <img src="hairstyle images/butterfly locs.jfif"
+                 alt="Butterfly Locs">
+        </div>
+        <div class="hair-info">
+            <h3>Butterfly Locs</h3>
+            <p>Soft, distressed locs with a relaxed finish.</p>
+            <button class="select-style">Choose This Style</button>
+        </div>
+    </article>
+
+    <!-- 8. Natural Afro -->
+    <article class="hair-card" data-category="natural">
+        <div class="hair-art">
+            <img src="hairstyle images/natural afro.jpg"
+                 alt="Natural Afro">
+        </div>
+        <div class="hair-info">
+            <h3>Natural Afro</h3>
+            <p>Celebrate your natural volume and texture.</p>
+            <button class="select-style">Choose This Style</button>
+        </div>
+    </article>
+
+    <!-- 9. Curly Twist-Out -->
+    <article class="hair-card" data-category="natural">
+        <div class="hair-art">
+            <img src="hairstyle images/curly twist-out.jfif"
+                 alt="Curly Twist-Out">
+        </div>
+        <div class="hair-info">
+            <h3>Curly Twist-Out</h3>
+            <p>Defined curls with beautiful natural texture.</p>
+            <button class="select-style">Choose This Style</button>
+        </div>
+    </article>
+</section>
+
+<!-- SELECTED HAIRSTYLE PANEL -->
+<div class="selection-panel" id="selectionPanel">
+
+    <h2>Your Selected Hairstyle ✨</h2>
+
+    <p id="selectedName">
+        Choose a hairstyle to continue.
+    </p>
+
+    <button
+        type="button"
+        id="continueButton"
+        disabled
+    >
+        Continue to Preview ✨
+    </button>
+
+</div>
+
+</main>
+
+<script>
+const filterButtons = document.querySelectorAll(".filter");
+const cards = document.querySelectorAll(".hair-card");
+const selectButtons = document.querySelectorAll(".select-style");
+
+const selectedName = document.getElementById("selectedName");
+const continueButton = document.getElementById("continueButton");
+
+let chosenStyle = "";
+let chosenCard = null;
+
+filterButtons.forEach(function(button) {
+
+    button.addEventListener("click", function() {
+
+        filterButtons.forEach(function(item) {
+            item.classList.remove("active");
+        });
+
+        button.classList.add("active");
+
+        const category = button.dataset.filter;
+
+        cards.forEach(function(card) {
+
+            if (category === "all" ||
+                card.dataset.category === category) {
+
+                card.style.display = "block";
+
+            } else {
+
+                card.style.display = "none";
+
+            }
+
+        });
+
+    });
+
+});
+
+selectButtons.forEach(function(button) {
+
+    button.addEventListener("click", function() {
+
+        selectButtons.forEach(function(item) {
+            item.textContent = "Choose This Style";
+            item.classList.remove("selected");
+        });
+
+        button.textContent = "Selected ✓";
+        button.classList.add("selected");
+
+        chosenStyle = button.parentElement.querySelector("h3").textContent;
+        chosenCard = button.closest(".hair-card");
+
+        selectedName.textContent = chosenStyle;
+
+        continueButton.disabled = false;
+
+    });
+
+});
+
+
+continueButton.addEventListener("click", function() {
+
+    if (!chosenStyle || !chosenCard) return;
+
+    const hairImage = chosenCard.querySelector("img").src;
+
+    sessionStorage.setItem("selectedHairStyle", chosenStyle);
+    sessionStorage.setItem("selectedHairImage", hairImage);
+
+    window.location.href = "preview.html";
+
+});
+
+
+// ========================================
+// DISPLAY THE USER'S CONFIRMED PHOTO
+// ========================================
+
+const savedPhoto = sessionStorage.getItem("hairstyleUserPhoto");
+
+const userPhotoSection =
+    document.getElementById("userPhotoSection");
+
+const userPhotoPreview =
+    document.getElementById("userPhotoPreview");
+
+if (savedPhoto && userPhotoPreview) {
+
+    userPhotoPreview.src = savedPhoto;
+
+    userPhotoSection.hidden = false;
+
+} else {
+
+    console.error("No confirmed user photo was found.");
+
+    if (userPhotoSection) {
+        userPhotoSection.hidden = false;
+        userPhotoSection.innerHTML = `
+            <h2>No Photo Found ✨</h2>
+            <p>Please return to the photo preparation page and upload your photo again.</p>
+            <a href="photo-upload.html">Upload Your Photo</a>
+        `;
+    }
+}
+
+</script>
+
+</body>
+</html>
