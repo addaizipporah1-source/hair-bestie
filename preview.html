@@ -113,6 +113,8 @@
 <main>
     <h2>Your Beauty Preview ✨</h2>
     <p>Let's make sure you've chosen the look you love.</p>
+    <p id="previewMessage" role="status" hidden></p>
+    <a id="previewRecovery" hidden></a>
 
     <div class="preview-container">
 
@@ -141,17 +143,82 @@
 </main>
 
 <script>
-    const userPhoto = sessionStorage.getItem("hairstyleUserPhoto");
-    const selectedHair = sessionStorage.getItem("selectedHairStyle");
-    const selectedHairImage = sessionStorage.getItem("selectedHairImage");
+    const previewContainer = document.querySelector(".preview-container");
+    const previewButtons = document.querySelector(".buttons");
+    const previewMessage = document.getElementById("previewMessage");
+    const previewRecovery = document.getElementById("previewRecovery");
+    const userPhotoElement = document.getElementById("userPhoto");
+    const hairPhotoElement = document.getElementById("hairPhoto");
+    const continueButton = document.querySelector(".continue");
 
-    if (!userPhoto || !selectedHair || !selectedHairImage) {
-        alert("Your photo or hairstyle selection is missing. Please select them again.");
-        window.location.href = "hairstyles.html";
+    function showRecovery(message, destination, label, hidePreview) {
+        previewMessage.textContent = message;
+        previewMessage.hidden = false;
+        previewRecovery.href = destination;
+        previewRecovery.textContent = label;
+        previewRecovery.hidden = false;
+        if (hidePreview) {
+            previewContainer.hidden = true;
+            previewButtons.hidden = true;
+        }
+    }
+
+    let userPhoto = null;
+    let selectedHair = null;
+    let selectedHairImage = null;
+    try {
+        userPhoto = sessionStorage.getItem("hairstyleUserPhoto");
+        selectedHair = sessionStorage.getItem("selectedHairStyle");
+        selectedHairImage = sessionStorage.getItem("selectedHairImage");
+    } catch (error) {
+        console.error("Could not read preview data:", error);
+        showRecovery(
+            "Your saved photo could not be accessed. Please upload it again to continue.",
+            "photo-upload.html",
+            "Go to Photo Upload",
+            true
+        );
+    }
+
+    if (!previewMessage.hidden) {
+        // Storage access failed; the recovery route is already displayed.
+    } else if (!userPhoto || !userPhoto.startsWith("data:image/")) {
+        showRecovery(
+            "Your photo is missing or invalid. Upload it again to continue.",
+            "photo-upload.html",
+            "Go to Photo Upload",
+            true
+        );
+    } else if (!selectedHair || !selectedHairImage) {
+        showRecovery(
+            "Your hairstyle selection is missing. Return to the gallery and choose a style.",
+            "hairstyles.html",
+            "Choose a Hairstyle",
+            true
+        );
     } else {
-        document.getElementById("userPhoto").src = userPhoto;
-        document.getElementById("hairPhoto").src = selectedHairImage;
+        userPhotoElement.onerror = function() {
+            showRecovery(
+                "Your saved photo could not be displayed. Upload it again to continue.",
+                "photo-upload.html",
+                "Go to Photo Upload",
+                true
+            );
+        };
+        hairPhotoElement.onerror = function() {
+            hairPhotoElement.hidden = true;
+            continueButton.disabled = true;
+            showRecovery(
+                "The selected hairstyle image could not be loaded. Choose another style from the gallery.",
+                "hairstyles.html",
+                "Choose Another Hairstyle",
+                false
+            );
+        };
+
         document.getElementById("hairName").textContent = selectedHair;
+        userPhotoElement.src = userPhoto;
+        hairPhotoElement.src = selectedHairImage;
     }
 
     function goBack() {
